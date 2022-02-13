@@ -32,8 +32,8 @@ class Ejercicio2 extends React.Component {
             <li>Dimensión</li>
             <li>Almacenamiento</li>
           </ul>
-          Salvo la imagen, para recuperar el resto de elementos tenéis que llamar a la API (Phone Specifications) usando el campo <i>detail</i> o <i>slug</i> 
-          de las consultas de listado de elementos
+          Salvo la imagen, marca y modelo, para recuperar el resto de elementos tenéis que llamar a la API (Phone Specifications) 
+          usando el campo <i>detail</i> o <i>slug</i> de las consultas de listado de elementos
           </li>
         <li>
           Añade un botón al Card que permita añadir un teléfono a una lista de favoritos, de modo que almacene su información en localStorage al ir a otra página<b> - 1 punto</b>
