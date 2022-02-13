@@ -36,7 +36,7 @@ class Ejercicio2 extends React.Component {
           de las consultas de listado de elementos
           </li>
         <li>
-          Añade un botón al Card que permita añadir un teléfono a una lista de favoritos, de modo que almacene su información en localStorage<b> - 1 punto</b>
+          Añade un botón al Card que permita añadir un teléfono a una lista de favoritos, de modo que almacene su información en localStorage al ir a otra página<b> - 1 punto</b>
         </li>
       </ul>
     </div>
