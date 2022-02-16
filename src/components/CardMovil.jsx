@@ -7,7 +7,6 @@ class CardMovil extends React.Component {
     super(props);
     this.buttonText = props.buttonText;
     this.onClickCard = props.onClickCard;
-    console.log(props.cardItem);
   }
 
   render() {

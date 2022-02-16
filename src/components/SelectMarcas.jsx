@@ -10,11 +10,15 @@ class SelectMarcas extends React.Component {
     this.brands = [];
   }
 
+  /**
+   * Al cargar el componente, se llama a la API para recuperar la lista de marcas
+   */
   async componentDidMount() {
     const responseBrands = await fetch(BASE_API_URL + 'brands');
     const responseDataBrands = await responseBrands.json();
     this.brands = responseDataBrands.data;
   }
+  
   render() {
     console.log('select renderizado');
     return (

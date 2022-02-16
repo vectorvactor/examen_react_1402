@@ -21,6 +21,10 @@ class PaginaMoviles extends React.Component {
     this.addFavourites = this.addFavourites.bind(this);
   }
 
+  /**
+   * Llama a la API que recupera información de un modelo concreto
+   * @param {*} itemEndpoint : Fragmento de URL con el identificador del elemento
+   */
   changeSelected = async (itemEndpoint) => {
     const response = await fetch(BASE_API_URL + itemEndpoint);
     const responseData = await response.json();
@@ -29,17 +33,23 @@ class PaginaMoviles extends React.Component {
     });
   };
 
+  /**
+   * Recupera los modelos de la marca seleccionada en el formulario
+   */
   updateTable = async () => {
     this.updateTableAPI('brands/' + this.brandInput.current.value);
   };
 
+  /**
+   * Recupera los modelos que devuelve la API 
+   * @param {*} endpointURL Fragmento de URL con el método de la API concreto 
+   */
   updateTableAPI = async (endpointURL) => {
     const response = await fetch(BASE_API_URL + endpointURL);
     const responseData = await response.json();
     const parsedData = responseData.data.phones.map((item) => {
-      const row = {
-        brand:
-          item.brand !== undefined ? item.brand : item.phone_name.split(' ')[0],
+      const row = {// Hay endpoints que no devuelven información sobre la marca, en ese caso la sacamos del nombre 
+        brand: item.brand !== undefined ? item.brand : item.phone_name.split(' ')[0],
         phone_name: item.phone_name,
         slug: item.slug,
       };
@@ -48,10 +58,15 @@ class PaginaMoviles extends React.Component {
     this.setState({
       tableData: parsedData,
     });
+    // Establecemos un modelo por defecto
     this.changeSelected(parsedData[0].slug);
   };
 
+  /**
+   * Añade un smartphone a la lista de favoritos
+   */
   addFavourites = () => {
+    // Comprobamos si el elemento ya está en la lista, en cuyo caso no lo añadimos
     let index = this.favouritesList.findIndex(
       (item) => item.phone_name == this.state.selectedItem.phone_name
     );
@@ -61,6 +76,9 @@ class PaginaMoviles extends React.Component {
       : console.log('Ya está en favoritos');
   };
 
+  /**
+   * Al cargar el componente, se comprueba si existe una lista de favoritos
+   */
   async componentDidMount() {
     let favourites = JSON.parse(localStorage.getItem('favourites'));
     console.log('Favoritos:' + favourites);
@@ -71,6 +89,9 @@ class PaginaMoviles extends React.Component {
     this.updateTableAPI('top-by-fans');
   }
 
+  /**
+   * Al eliminar el componente, se copia la lista de favoritos al localStorage
+   */
   componentWillUnmount() {
     localStorage.setItem('favourites', JSON.stringify(this.favouritesList));
   }
