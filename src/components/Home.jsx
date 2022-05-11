@@ -4,21 +4,23 @@ import Navigation from "./Navigation";
 import { PaginasApp } from "../data/PaginasApp";
 
 export default function Home() {
-  let { path, url } = useRouteMatch();
-
+  const { path, url } = useRouteMatch();
+  const loggedIn =localStorage.getItem("loggedIn")
   return (
     <>
-     <Navigation authorized={true} baseUrl={url} />
+     <Navigation authorized={loggedIn} baseUrl={url} />
      <Switch>
         {PaginasApp.map((item) => {
-          return (
-            <Route
-              key={item.id}
-              path={`${path}/${item.path}`}
-              component={item.component}
-             />
-          );
-        })}
+          if (loggedIn) {
+            return (
+              <Route
+                key={item.id}
+                path={`${path}/${item.path}`}
+                component={item.component}
+              />
+            );
+          }})
+        }
       </Switch>
     </>
   );
