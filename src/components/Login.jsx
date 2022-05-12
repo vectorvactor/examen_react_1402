@@ -4,6 +4,7 @@ import { Container,Form } from 'react-bootstrap'
 import { useHistory } from "react-router-dom";
 import { Users } from "../data/Users";
 export default function Login(){
+  
   const history = useHistory();
   const nameInput = useRef();
   const pwdInput = useRef();
@@ -20,8 +21,8 @@ export default function Login(){
 
   return (
     <>
-     <h1>Inicio de sesión - Test App</h1>
       <Container>
+        <h1>Inicio de sesión - Test App</h1>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Nombre de usuario</Form.Label>
