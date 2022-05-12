@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import MenuOptions from './MenuOptions';
 import Boton from './Boton';
 import { Navbar, Offcanvas, Container, Nav } from 'react-bootstrap';
@@ -6,20 +7,26 @@ import { BOOTSTRAP_LG_SIZE } from '../data/Constants';
 import logo from '../assets/images/logo.png';
 import './navigation.css';
 
-class Navigation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.authorized=props.authorized;
-    this.baseUrl = props.baseUrl;
-    this.state = { width: window.innerWidth };
-  }
+export default function Navigation(props) {
 
-  updateDimensions = () => {
-    this.setState({ width: window.innerWidth });
+  const [ width, setWidth ] = useState();
+  const history = useHistory();
+
+  useEffect(() => {
+    window.addEventListener('resize', updateDimensions);
+  });
+
+  const updateDimensions = () => {
+    setWidth(window.innerWidth);
   };
 
-  generateMenu() {
-    if (this.state.width < BOOTSTRAP_LG_SIZE) {
+  const logout = () => {
+    localStorage.removeItem("loggedIn");
+    history.push("/");
+  }
+
+  const generateMenu = () => {
+    if (width < BOOTSTRAP_LG_SIZE) {
       return (
         <>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
@@ -35,7 +42,8 @@ class Navigation extends React.Component {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <MenuOptions baseUrl={this.baseUrl} />
+                <MenuOptions baseUrl={props.baseUrl} />
+                <Boton text="Logout" onClickButton={logout} />
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
@@ -44,40 +52,34 @@ class Navigation extends React.Component {
     } else {
       return (
         <Nav className="justify-content-end nav-expanded">
-          <MenuOptions baseUrl={this.baseUrl} />
+          <MenuOptions baseUrl={props.baseUrl} />
+          <Boton text="Logout" onClickButton={logout} />
         </Nav>
       );
     }
-}
-  componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions);
+  };
+
+  if (!props.authorized) {
+    return (<></>);
   }
+  else {
+    let options = generateMenu();
 
-  render() {
-    if (!this.authorized) {
-      return (<></>);
-    }
-    else {
-      let options = this.generateMenu();
-
-      return (
-        <Navbar bg="light" expand={false}>
-          <Container fluid>
-            <Navbar.Brand href="#">
-              <img
-                className="logo-image"
-                src={logo}
-                width="50px"
-                alt="logo"
-              />
-              Examen react
-            </Navbar.Brand>
-            {options}
-          </Container>
-        </Navbar>
-      );
-    }
+    return (
+      <Navbar bg="light" expand={false}>
+        <Container fluid>
+          <Navbar.Brand href="#">
+            <img
+              className="logo-image"
+              src={logo}
+              width="50px"
+              alt="logo"
+            />
+            Examen react
+          </Navbar.Brand>
+          {options}
+        </Container>
+      </Navbar>
+    );
   }
 }
-
-export default Navigation;
