@@ -9,6 +9,7 @@ class PaginaFavoritos extends React.Component {
     this.state = {
       favouritesList: [],
     };
+    this.userName = localStorage.getItem("loggedUser");
     this.removeFavourite = this.removeFavourite.bind(this);
   }
 
@@ -18,8 +19,8 @@ class PaginaFavoritos extends React.Component {
    */
   removeFavourite = (phone_name) => {
     let favouritesDelete = this.state.favouritesList;
-    let index = favouritesDelete.findIndex(
-      (item) => item.phone_name == phone_name
+    const index = favouritesDelete.findIndex(
+      (item) => item.phone_name === phone_name
     );
     // Si el elemento está en la lista de favoritos, devolvemos la lista original filtrada 
     // quitando el elemento seleccionado
@@ -35,7 +36,8 @@ class PaginaFavoritos extends React.Component {
    * Al cargar la página, se recupera de localStorage la lista de favoritos
    */
   componentDidMount() {
-    let favourites = JSON.parse(localStorage.getItem('favourites'));
+    
+    let favourites = JSON.parse(localStorage.getItem(`favourites-${this.userName}`));
     favourites =
       favourites !== null && favourites !== undefined && favourites !== ''
         ? favourites
@@ -47,7 +49,7 @@ class PaginaFavoritos extends React.Component {
    * Al eliminar el componente, se copia la lista de favoritos al localStorage
    */
   componentWillUnmount() {
-    localStorage.setItem('favourites', JSON.stringify(this.state.favouritesList));
+    localStorage.setItem(`favourites-${this.userName}`, JSON.stringify(this.state.favouritesList));
   }
 
   render() {

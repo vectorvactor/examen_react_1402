@@ -5,13 +5,13 @@ import { PaginasApp } from "../data/PaginasApp";
 
 export default function Home() {
   const { path, url } = useRouteMatch();
-  const loggedIn =localStorage.getItem("loggedIn")
+  const loggedIn =localStorage.getItem("loggedUser")
   return (
     <>
      <Navigation authorized={loggedIn} baseUrl={url} />
      <Switch>
         {PaginasApp.map((item) => {
-          if (loggedIn) {
+          if (loggedIn !== null) {
             return (
               <Route
                 key={item.id}

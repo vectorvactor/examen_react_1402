@@ -19,6 +19,7 @@ class PaginaMoviles extends React.Component {
     this.updateTable = this.updateTable.bind(this);
     this.updateTableAPI = this.updateTableAPI.bind(this);
     this.addFavourites = this.addFavourites.bind(this);
+    this.userName = localStorage.getItem("loggedUser");
   }
 
   /**
@@ -67,7 +68,7 @@ class PaginaMoviles extends React.Component {
    */
   addFavourites = () => {
     // Comprobamos si el elemento ya está en la lista, en cuyo caso no lo añadimos
-    let index = this.favouritesList.findIndex(
+    const index = this.favouritesList.findIndex(
       (item) => item.phone_name == this.state.selectedItem.phone_name
     );
 
@@ -80,7 +81,7 @@ class PaginaMoviles extends React.Component {
    * Al cargar el componente, se comprueba si existe una lista de favoritos
    */
   async componentDidMount() {
-    let favourites = JSON.parse(localStorage.getItem('favourites'));
+    const favourites = JSON.parse(localStorage.getItem(`favourites-${this.userName}`));
     console.log('Favoritos:' + favourites);
     this.favouritesList =
       favourites !== null && favourites !== undefined && favourites !== ''
@@ -93,7 +94,7 @@ class PaginaMoviles extends React.Component {
    * Al eliminar el componente, se copia la lista de favoritos al localStorage
    */
   componentWillUnmount() {
-    localStorage.setItem('favourites', JSON.stringify(this.favouritesList));
+    localStorage.setItem(`favourites-${this.userName}`, JSON.stringify(this.favouritesList));
   }
 
   render() {

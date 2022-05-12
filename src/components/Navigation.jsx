@@ -21,7 +21,7 @@ export default function Navigation(props) {
   };
 
   const logout = () => {
-    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("loggedUser");
     history.push("/");
   }
 

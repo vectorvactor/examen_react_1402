@@ -15,7 +15,7 @@ export default function Login(){
     const user = Users.find(item => item.name === nameInput.current.value && item.password === pwdInput.current.value);
 
     if (user !== undefined) {
-      localStorage.setItem('loggedIn', true);
+      localStorage.setItem('loggedUser', user.name);
       history.push("/home");
     }
   }
