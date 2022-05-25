@@ -1,6 +1,7 @@
 {
   "name": "examen_react_1402",
   "version": "0.1.0",
+  "homepage": "https://github.com/vectorvactor/examen_react_1402",
   "private": true,
   "dependencies": {
     "@petfinder/petfinder-js": "^1.0.6",
@@ -39,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
