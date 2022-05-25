@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/examen_react_1402/static/css/main.f1dc260a.css",
+    "main.js": "/examen_react_1402/static/js/main.871686c2.js",
+    "static/media/logo.png": "/examen_react_1402/static/media/logo.a544fd8cf64d82898e91.png",
+    "index.html": "/examen_react_1402/index.html",
+    "main.f1dc260a.css.map": "/examen_react_1402/static/css/main.f1dc260a.css.map",
+    "main.871686c2.js.map": "/examen_react_1402/static/js/main.871686c2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1dc260a.css",
+    "static/js/main.871686c2.js"
+  ]
+}
