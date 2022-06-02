@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/examen_react_1402/static/css/main.f1dc260a.css",
-    "main.js": "/examen_react_1402/static/js/main.d706270c.js",
+    "main.css": "/examen_react_1402/static/css/main.4c2159f0.css",
+    "main.js": "/examen_react_1402/static/js/main.00003efc.js",
     "static/media/logo.png": "/examen_react_1402/static/media/logo.a544fd8cf64d82898e91.png",
     "index.html": "/examen_react_1402/index.html",
-    "main.f1dc260a.css.map": "/examen_react_1402/static/css/main.f1dc260a.css.map",
-    "main.d706270c.js.map": "/examen_react_1402/static/js/main.d706270c.js.map"
+    "main.4c2159f0.css.map": "/examen_react_1402/static/css/main.4c2159f0.css.map",
+    "main.00003efc.js.map": "/examen_react_1402/static/js/main.00003efc.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1dc260a.css",
-    "static/js/main.d706270c.js"
+    "static/css/main.4c2159f0.css",
+    "static/js/main.00003efc.js"
   ]
 }
