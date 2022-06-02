@@ -1,7 +1,7 @@
 {
   "name": "examen_react_1402",
   "version": "0.1.0",
-  "homepage": "https://github.com/vectorvactor/examen_react_1402",
+  "homepage": "https://vectorvactor.github.io/examen_react_1402/",
   "private": true,
   "dependencies": {
     "@petfinder/petfinder-js": "^1.0.6",
@@ -21,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

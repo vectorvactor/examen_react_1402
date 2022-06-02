@@ -22,18 +22,15 @@ class SelectMarcas extends React.Component {
   render() {
     console.log('select renderizado');
     return (
-      <Form.Group as={Col}>
-        <Form.Label>Marca</Form.Label>
-        <Form.Select ref={this.reference}>
-          {this.brands.map((item) => {
-            return (
-              <option key={uuid()} value={item.brand_slug}>
-                {item.brand_name}
-              </option>
-            );
-          })}
-        </Form.Select>
-      </Form.Group>
+      <Form.Select ref={this.reference}>
+        {this.brands.map((item) => {
+          return (
+            <option key={uuid()} value={item.brand_slug}>
+              {item.brand_name}
+            </option>
+          );
+        })}
+      </Form.Select>
     );
   }
 }

@@ -13,8 +13,9 @@ export default function Navigation(props) {
   const history = useHistory();
 
   useEffect(() => {
+    console.log("Montado Navigation");
     window.addEventListener('resize', updateDimensions);
-  });
+  }, []);
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);

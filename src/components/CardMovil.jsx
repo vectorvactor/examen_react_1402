@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import Boton from './Boton';
-
+import './cardmovil.css';
 class CardMovil extends React.Component {
   constructor(props) {
     super(props);
@@ -11,8 +11,8 @@ class CardMovil extends React.Component {
 
   render() {
     return (
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={this.props.cardItem.thumbnail} />
+      <Card>
+        <Card.Img className="card-movil" variant="top" src={this.props.cardItem.thumbnail} />
         <Card.Body>
           <Card.Title>
             {this.props.cardItem.brand} {this.props.cardItem.phone_name}
